@@ -10,9 +10,6 @@ const height = innerHeight;
 const horC = width / 2;
 const vertC = height / 2;
 
-// const wPercent = width / 100;
-// const hPercent = height / 100;
-
 const a1 = `0 0`;
 const b1 = `${width} 0`;
 const c1 = `${width} ${height}`;
@@ -55,25 +52,15 @@ timeLineIn.add({
   ],
   duration: timeDurationIn,
   delay: timeStartWait,
+  complete: () => {
+    logo.innerHTML = 'Click';
+    svg.addEventListener("click", startAnimateOpen);
+  },
 });
 
 timeLineIn.add({
   fill: [{ value: `rgba(18,18,18,1)` }],
   duration: 800
-});
-
-anime({
-  targets: ".logo",
-  opacity: [{ value: "1" }, { value: "1" }],
-  round: 1,
-  loop: false,
-  easing: "linear",
-  delay: timeStartWait + timeDurationIn,
-  duration: 1,
-  complete: function(e) {
-    logo.innerHTML = 'Click';
-    svg.addEventListener("click", startAnimateOpen);
-  }
 });
 
 function startAnimateOpen() {
