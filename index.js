@@ -2,7 +2,7 @@ import anime from "./anime-master/lib/anime.es.js";
 
 const svg = document.getElementById("svg");
 const popup = document.getElementById("popup");
-const logo = document.querySelector(".logo");
+const logoText = document.querySelector("#logo-text");
 
 const width = innerWidth;
 const height = innerHeight;
@@ -29,7 +29,7 @@ popup.setAttribute("fill", "rgba(18,18,18,1)");
 
 const timeStartWait = 2000;
 const timeDurationIn = 400;
-const timeDurationOpen = 600;
+const timeDurationOpen = 500;
 
 const timeLineIn = anime.timeline({
   targets: "#popup",
@@ -53,7 +53,7 @@ timeLineIn.add({
   duration: timeDurationIn,
   delay: timeStartWait,
   complete: () => {
-    logo.innerHTML = 'Click';
+    logoText.innerHTML = 'Click here';
     svg.addEventListener("click", startAnimateOpen);
   },
 });
@@ -84,6 +84,47 @@ function startAnimateOpen() {
     loop: false,
     begin: function (e) {
       svg.removeEventListener("click", startAnimateOpen);
+      startAnimateLineLogoOpen();
+    },
+    complete: function (e) {
+      startContentAnimate();
     }
   });
+}
+
+function startAnimateLineLogoOpen() {
+  anime({
+    targets: ".line.top",
+    translateX: horC,
+    scaleX: 0,
+    opacity: 0,
+    easing: "linear",
+    duration: timeDurationOpen,
+    round: 1,
+    loop: false,
+  });
+  anime({
+    targets: ".line.bottom",
+    translateX: -horC,
+    opacity: 0,
+    scaleX: 0,
+    easing: "linear",
+    duration: timeDurationOpen,
+    round: 1,
+    loop: false,
+  });
+  anime({
+    targets: "#logo-text",
+    opacity: 0,
+    easing: "linear",
+    duration: timeDurationOpen - 200,
+    delay: 100,
+    round: 100,
+    loop: false,
+  });
+}
+
+function startContentAnimate() {
+  console.log(123);
+
 }
