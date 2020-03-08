@@ -3,6 +3,8 @@ import anime from "./anime-master/lib/anime.es.js";
 const svg = document.getElementById("svg");
 const popup = document.getElementById("popup");
 const logoText = document.querySelector("#logo-text");
+const logo = document.querySelector(".logo");
+const dialog = document.getElementById("dialog");
 
 const width = innerWidth;
 const height = innerHeight;
@@ -15,8 +17,8 @@ const b1 = `${width} 0`;
 const c1 = `${width} ${height}`;
 const d1 = `0 ${height}`;
 
-const rectW = 300 / 2;
-const rectH = 200 / 2;
+const rectW = 280 / 2;
+const rectH = 196 / 2;
 
 const a2 = `${horC - rectW} ${vertC - rectH}`;
 const b2 = `${horC + rectW} ${vertC - rectH}`;
@@ -53,8 +55,9 @@ timeLineIn.add({
   duration: timeDurationIn,
   delay: timeStartWait,
   complete: () => {
-    logoText.innerHTML = 'Click here';
-    svg.addEventListener("click", startAnimateOpen);
+    logoText.innerHTML = 'Get started';
+    logo.style.cursor = 'pointer';
+    logo.addEventListener("click", startAnimateOpen);
   },
 });
 
@@ -83,11 +86,13 @@ function startAnimateOpen() {
     round: 1,
     loop: false,
     begin: function (e) {
-      svg.removeEventListener("click", startAnimateOpen);
+      logo.removeEventListener("click", startAnimateOpen);
       startAnimateLineLogoOpen();
     },
     complete: function (e) {
       startContentAnimate();
+      logo.style.display = 'none';
+      dialog.style.display = 'flex';
     }
   });
 }
@@ -126,5 +131,4 @@ function startAnimateLineLogoOpen() {
 
 function startContentAnimate() {
   console.log(123);
-
 }
