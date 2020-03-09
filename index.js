@@ -55,7 +55,7 @@ timeLineIn.add({
   duration: timeDurationIn,
   delay: timeStartWait,
   complete: () => {
-    logoText.innerHTML = 'Get started';
+    logoText.innerHTML = 'Let’s go';
     logo.style.cursor = 'pointer';
     logo.addEventListener("click", startAnimateOpen);
   },

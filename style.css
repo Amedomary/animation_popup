@@ -1,30 +1,50 @@
-html, body {
-  margin: 0;
+html,
+body {
   height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #121212;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+#dialog {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 32px;
+  color: rgb(226, 226, 226);
+}
+
+#svg {
+  position: relative;
+  z-index: 5;
 }
 
 .bg {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
-  object-fit: cover;
-  z-index: 1;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   filter: hue-rotate(216deg) grayscale(0.8);
 }
 
 .main {
-  display: flex;
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
-  object-fit: cover;
-  z-index: 10;
+  display: flex;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .logo {
@@ -33,28 +53,45 @@ html, body {
   flex-direction: column;
   width: 160px;
   margin: auto;
+  padding: 60px;
   font-size: 24px;
+  font-weight: 600;
   line-height: 3;
   text-align: center;
-  color: #fff;
   text-transform: uppercase;
-  font-weight: 600;
-  padding: 60px;
-}
-
-#dialog {
-  display: none;
-  margin: 32px;
+  color: #ffffff;
 }
 
 .line {
-  content: '';
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.7);
   width: 110%;
+  height: 2px;
+  content: "";
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-#svg {
-  position: relative;
-  z-index: 5;
+.heading {
+  text-align: center;
+}
+
+.content {
+  margin-block-end: 2.4em;
+}
+
+.company {
+  width: 100%;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: right;
+  text-transform: uppercase;
+
+  margin-block-end: 1.2em;
+}
+
+.button {
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #121212;
+  background: #ffffff;
 }
