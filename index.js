@@ -6,6 +6,19 @@ const logoText = document.querySelector("#logo-text");
 const logo = document.querySelector(".logo");
 const dialog = document.getElementById("dialog");
 
+function reCalculate() {
+  const width = innerWidth;
+  const height = innerHeight;
+
+  const a1 = `0 0`;
+  const b1 = `${width} 0`;
+  const c1 = `${width} ${height}`;
+  const d1 = `0 ${height}`;
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  popup.setAttribute("points", `${a1} ${b1} ${c1} ${d1}`);
+}
+
 const width = innerWidth;
 const height = innerHeight;
 
@@ -32,6 +45,8 @@ popup.setAttribute("fill", "rgba(18,18,18,1)");
 const timeStartWait = 2000;
 const timeDurationIn = 400;
 const timeDurationOpen = 500;
+
+window.addEventListener('resize', reCalculate);
 
 const timeLineIn = anime.timeline({
   targets: "#popup",
@@ -130,5 +145,10 @@ function startAnimateLineLogoOpen() {
 }
 
 function startContentAnimate() {
-  console.log(123);
+  anime({
+    targets: '#dialog .el',
+    translateX: [-20, 0],
+    opacity: 1,
+    delay: anime.stagger(100) // increase delay by 100ms for each elements.
+  });
 }
